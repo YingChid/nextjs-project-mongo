@@ -4,7 +4,7 @@ import { Fragment } from "react/cjs/react.production.min";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { getData, getDataID } from '../api/meetup'
 
-function MeetupDetails(props) {
+const MeetupDetails = (props) => {
     return (
         <Fragment>
             <Head>
@@ -24,7 +24,7 @@ function MeetupDetails(props) {
     );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
     const meetups = await getData();
     return {
         fallback: false,
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
     // fetch data for a single meetup
     const meetupId = context.params.meetupId;
     const selectMeetup = await getDataID(meetupId);

@@ -2,12 +2,10 @@ import Head from 'next/head';
 import { Fragment } from "react/cjs/react.production.min";
 import MeetupList from "../components/meetups/MeetupList";
 import { getData } from './api/meetup'
-
 // import { useEffect, useState } from "react";
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
     // fetch data from an API
-
     // const res = await fetch('http://localhost:3000/api/meetup');
     // const meetups = await res.json();
     const meetups = await getData();
@@ -27,7 +25,7 @@ export async function getStaticProps() {
     }
 }
 
-function HomePage({ meetups }) {
+const HomePage = ({meetups}) => {
     // const [loadMeetups, setLoadMeetups] = useState([])
     // useEffect(() => {
     //     // send a http request and fetch data

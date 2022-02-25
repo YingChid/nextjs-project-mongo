@@ -1,7 +1,7 @@
 import { MongoClient} from 'mongodb'
 // /api-new-meetup
 // POST /api/new-meetup
-async function handler(req, res) {
+const handler = async (req, res) => {
     if (req.method === 'POST') {
         const data = req.body;
         // const { title, image, address, description } = data;

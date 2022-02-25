@@ -4,19 +4,19 @@ import { getMeetupCollection } from '../../lib/db'
 // /api-meetup
 // GET /api/meetup
 
-export async function getData() {
+export const getData = async () => {
     const meetupCollection = await getMeetupCollection();
     const meetups = await meetupCollection.find().toArray();
-    return meetups
+    return meetups;
 }
 
-export async function getDataID(meetupId) {
+export const getDataID = async (meetupId) => {
     const meetupCollection = await getMeetupCollection();
     const selectMeetup = await meetupCollection.findOne({ _id: ObjectId(meetupId)});
-    return selectMeetup
+    return selectMeetup;
 }
 
-async function handler(req, res) {
+const handler = async (req, res) => {
     const jsonData = await getData()
     res.status(200).json(jsonData)
 }
